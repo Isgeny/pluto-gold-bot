@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{90B487AD-4B44-4EF5-803C-A167B3159CB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlutoGoldBot.Tests", "tests\PlutoGoldBot.Tests\PlutoGoldBot.Tests.csproj", "{0CA4B4D4-656C-4973-B548-37DA1EE30B23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlutoGoldBot.UnitTests", "tests\PlutoGoldBot.UnitTests\PlutoGoldBot.UnitTests.csproj", "{0CA4B4D4-656C-4973-B548-37DA1EE30B23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
