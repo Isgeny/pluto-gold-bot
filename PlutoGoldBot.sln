@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlutoGoldBot.Host", "src\PlutoGoldBot.Host\PlutoGoldBot.Host.csproj", "{1EFB1E35-ED99-459A-9784-C15C95E79DFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F4F041AB-6854-4D0A-99CA-845267A7C286}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{64B990F7-DC08-4DFE-AA5A-6E0AFC003FC4}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{90B487AD-4B44-4EF5-803C-A167B3159CB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlutoGoldBot.Tests", "tests\PlutoGoldBot.Tests\PlutoGoldBot.Tests.csproj", "{0CA4B4D4-656C-4973-B548-37DA1EE30B23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EFB1E35-ED99-459A-9784-C15C95E79DFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EFB1E35-ED99-459A-9784-C15C95E79DFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EFB1E35-ED99-459A-9784-C15C95E79DFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EFB1E35-ED99-459A-9784-C15C95E79DFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CA4B4D4-656C-4973-B548-37DA1EE30B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CA4B4D4-656C-4973-B548-37DA1EE30B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CA4B4D4-656C-4973-B548-37DA1EE30B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CA4B4D4-656C-4973-B548-37DA1EE30B23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1EFB1E35-ED99-459A-9784-C15C95E79DFB} = {F4F041AB-6854-4D0A-99CA-845267A7C286}
+		{0CA4B4D4-656C-4973-B548-37DA1EE30B23} = {90B487AD-4B44-4EF5-803C-A167B3159CB1}
+	EndGlobalSection
+EndGlobal
