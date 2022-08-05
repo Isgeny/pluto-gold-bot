@@ -7,6 +7,11 @@
 public class AppSettings
 {
     /// <summary>
+    /// Expiration time for items in memory cache in seconds
+    /// </summary>
+    public int CACHE_EXPIRATION { get; set; }
+
+    /// <summary>
     /// Waves node api url
     /// </summary>
     public string NODE_REST_URL { get; set; } = string.Empty;

@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{90B487AD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlutoGoldBot.UnitTests", "tests\PlutoGoldBot.UnitTests\PlutoGoldBot.UnitTests.csproj", "{0CA4B4D4-656C-4973-B548-37DA1EE30B23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlutoGoldBot.IntegrationTests", "tests\PlutoGoldBot.IntegrationTests\PlutoGoldBot.IntegrationTests.csproj", "{D12D6AFA-96D7-41F7-BD73-281C5F45AB5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,9 +30,14 @@ Global
 		{0CA4B4D4-656C-4973-B548-37DA1EE30B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CA4B4D4-656C-4973-B548-37DA1EE30B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CA4B4D4-656C-4973-B548-37DA1EE30B23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D12D6AFA-96D7-41F7-BD73-281C5F45AB5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D12D6AFA-96D7-41F7-BD73-281C5F45AB5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D12D6AFA-96D7-41F7-BD73-281C5F45AB5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D12D6AFA-96D7-41F7-BD73-281C5F45AB5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1EFB1E35-ED99-459A-9784-C15C95E79DFB} = {F4F041AB-6854-4D0A-99CA-845267A7C286}
 		{0CA4B4D4-656C-4973-B548-37DA1EE30B23} = {90B487AD-4B44-4EF5-803C-A167B3159CB1}
+		{D12D6AFA-96D7-41F7-BD73-281C5F45AB5C} = {90B487AD-4B44-4EF5-803C-A167B3159CB1}
 	EndGlobalSection
 EndGlobal

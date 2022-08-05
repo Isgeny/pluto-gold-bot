@@ -7,4 +7,6 @@ public class Entry
     public string Type { get; set; } = string.Empty;
 
     public object Value { get; set; } = new();
+
+    public T GetValue<T>() => (T)Value;
 }
