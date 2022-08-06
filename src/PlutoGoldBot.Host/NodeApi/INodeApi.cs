@@ -13,12 +13,15 @@ public interface INodeApi
     [Get("/blocks/height")]
     Task<BlockHeight> GetBlockchainHeight();
 
-    [Get("/blocks/at/{height}")]
-    Task<Block> GetBlock(int height);
+    [Get("/blocks/seq/{from}/{to}")]
+    Task<Block[]> GetBlocks(int from, int to);
 
     [Get("/addresses/data/{address}/{key}")]
     Task<Entry> GetEntry(string address, string key);
 
     [Post("/utils/script/evaluate/{address}")]
     Task<Evaluation> GetEvaluation(string address, [Body(true)] EvaluationExpression expression);
+
+    [Post("/transactions/info")]
+    Task<Transaction[]> GetTransactions([Body(true)] IdsRequest ids);
 }

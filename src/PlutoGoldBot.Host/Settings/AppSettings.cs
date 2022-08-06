@@ -19,7 +19,7 @@ public class AppSettings
     /// <summary>
     /// Minimum amount of issued pluto to scan
     /// </summary>
-    public int MIN_ISSUED_SCAN { get; set; }
+    public decimal MIN_ISSUED_SCAN { get; set; }
 
     /// <summary>
     /// Waves node api url
