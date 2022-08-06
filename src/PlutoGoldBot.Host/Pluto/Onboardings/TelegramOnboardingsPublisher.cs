@@ -32,29 +32,29 @@ public class TelegramOnboardingsPublisher : IOnboardingsPublisher
     {
         var sb = new StringBuilder(1024);
 
-        sb.AppendLine($"Onboarding: *{onboarding.Asset.ToEscapedString()} {onboarding.AssetName}*");
-        sb.AppendLine($"Issued: 🟠 *{onboarding.Issued.ToEscapedString()} PLUTO*");
+        sb.AppendLine($"Onboarding: *{onboarding.Asset.ToEscapedQuantityString()} {onboarding.Asset.ToEscapedNameString()}*");
+        sb.AppendLine($"Issued: 🟠 *{onboarding.Issued.ToEscapedQuantityString()} {onboarding.Issued.ToEscapedNameString()}*");
         sb.AppendLine($"Transaction: [wavesexplorer](https://wavesexplorer.com/transactions/{onboarding.TransactionId})");
 
         var plutoSupply = await _treasuryService.GetPlutoSupply();
-        sb.AppendLine($"PLUTO Supply: 🟠 *{plutoSupply.ToEscapedString()}*");
+        sb.AppendLine($"PLUTO Supply: 🟠 *{plutoSupply.ToEscapedQuantityString()}*");
 
         var treasuryValue = await _treasuryService.GetTreasuryValue();
-        sb.AppendLine($"Treasury Value: 💵 *{treasuryValue.ToEscapedString()}*");
+        sb.AppendLine($"Treasury Value: 💵 *{treasuryValue.ToEscapedQuantityString()}*");
 
         var backedPrice = await _treasuryService.GetBackedPrice();
-        sb.AppendLine($"Backed Price: 💵 *{backedPrice.ToEscapedString(2)}*");
+        sb.AppendLine($"Backed Price: 💵 *{backedPrice.ToEscapedQuantityString(2)}*");
 
         var marketPrice = await _treasuryService.GetMarketPrice();
-        sb.AppendLine($"Market Price: 💵 *{marketPrice.ToEscapedString(2)}*");
+        sb.AppendLine($"Market Price: 💵 *{marketPrice.ToEscapedQuantityString(2)}*");
 
         var maxPrice = await _treasuryService.GetMaxPrice();
-        sb.AppendLine($"Max Price: 💵 *{maxPrice.ToEscapedString(2)}*");
+        sb.AppendLine($"Max Price: 💵 *{maxPrice.ToEscapedQuantityString(2)}*");
 
         var growthFactor = await _treasuryService.GetGrowthFactor();
         sb.AppendLine($"Growth Factor: *{growthFactor.ToEscapedString()}%*");
 
-        var emoji = (int)(onboarding.Issued / _settings.Value.EMOJI_COST);
+        var emoji = (int)(onboarding.Issued.Quantity / _settings.Value.EMOJI_COST);
         for (var i = 0; i < emoji; i++)
         {
             sb.Append("🟠");

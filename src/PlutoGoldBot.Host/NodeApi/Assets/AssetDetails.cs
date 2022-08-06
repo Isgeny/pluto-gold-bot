@@ -6,5 +6,7 @@ public class AssetDetails
 
     public string Name { get; set; } = string.Empty;
 
+    public byte Decimals { get; set; }
+
     public long Quantity { get; set; }
 }

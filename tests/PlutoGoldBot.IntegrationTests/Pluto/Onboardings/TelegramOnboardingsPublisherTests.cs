@@ -1,4 +1,5 @@
-﻿using PlutoGoldBot.Host.NodeApi;
+﻿using PlutoGoldBot.Host.Blockchain;
+using PlutoGoldBot.Host.NodeApi;
 using PlutoGoldBot.Host.Pluto.Onboardings;
 using PlutoGoldBot.Host.Pluto.Treasury;
 using PlutoGoldBot.Host.Settings;
@@ -26,9 +27,8 @@ public class TelegramOnboardingsPublisherTests
 
         var onboarding = new Onboarding
         {
-            Asset = 12345.67M,
-            AssetName = "USDN",
-            Issued = 4567.89M,
+            Asset = Asset.FromUsdn(12345.67M),
+            Issued = Asset.FromPluto(4567.89M),
         };
 
         await telegramOnboardingsPublisher.PublishOnboardings(new[] { onboarding });

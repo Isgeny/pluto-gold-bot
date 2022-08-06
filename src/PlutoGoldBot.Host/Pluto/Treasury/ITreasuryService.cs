@@ -1,16 +1,18 @@
-﻿namespace PlutoGoldBot.Host.Pluto.Treasury;
+﻿using PlutoGoldBot.Host.Blockchain;
+
+namespace PlutoGoldBot.Host.Pluto.Treasury;
 
 public interface ITreasuryService
 {
-    Task<decimal> GetPlutoSupply();
+    Task<Asset> GetPlutoSupply();
 
-    Task<decimal> GetTreasuryValue();
+    Task<Asset> GetTreasuryValue();
 
-    Task<decimal> GetBackedPrice();
+    Task<Asset> GetBackedPrice();
 
-    Task<decimal> GetMarketPrice();
+    Task<Asset> GetMarketPrice();
 
-    Task<decimal> GetMaxPrice();
+    Task<Asset> GetMaxPrice();
 
     Task<decimal> GetGrowthFactor();
 }

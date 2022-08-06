@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\PlutoGoldBot.Host\PlutoGoldBot.Host.csproj" />
+        <ProjectReference Include="..\..\src\PlutoGoldBot.Host\PlutoGoldBot.Host.csproj" />
     </ItemGroup>
 
 </Project>

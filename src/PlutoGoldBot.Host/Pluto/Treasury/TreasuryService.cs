@@ -18,46 +18,46 @@ public class TreasuryService : ITreasuryService
         _settings = settings;
     }
 
-    public Task<decimal> GetPlutoSupply() => _cache.GetOrCreateAsync($"{nameof(TreasuryService)}_{nameof(GetPlutoSupply)}", async entry =>
+    public Task<Asset> GetPlutoSupply() => _cache.GetOrCreateAsync($"{nameof(TreasuryService)}_{nameof(GetPlutoSupply)}", async entry =>
     {
         entry.SetAbsoluteExpiration(TimeSpan.FromSeconds(_settings.Value.CACHE_EXPIRATION));
 
-        var plutoAsset = await _nodeApi.GetAssetDetails(Assets.PlutoId);
-        return plutoAsset.Quantity / Assets.PlutoScale;
+        var plutoAsset = await _nodeApi.GetAssetDetails(Asset.PlutoId);
+        return Asset.FromRawPluto(plutoAsset.Quantity);
     });
 
-    public Task<decimal> GetTreasuryValue() => _cache.GetOrCreateAsync($"{nameof(TreasuryService)}_{nameof(GetTreasuryValue)}", async entry =>
+    public Task<Asset> GetTreasuryValue() => _cache.GetOrCreateAsync($"{nameof(TreasuryService)}_{nameof(GetTreasuryValue)}", async entry =>
     {
         entry.SetAbsoluteExpiration(TimeSpan.FromSeconds(_settings.Value.CACHE_EXPIRATION));
 
         var treasuryValue = await _nodeApi.GetEntry(PlutoContracts.Parameters, "last_treasuryValue");
-        return treasuryValue.GetValue<long>() / Assets.UsdnScale;
+        return Asset.FromRawUsdn(treasuryValue.GetValue<long>());
     });
 
-    public Task<decimal> GetBackedPrice() => _cache.GetOrCreateAsync($"{nameof(TreasuryService)}_{nameof(GetBackedPrice)}", async entry =>
+    public Task<Asset> GetBackedPrice() => _cache.GetOrCreateAsync($"{nameof(TreasuryService)}_{nameof(GetBackedPrice)}", async entry =>
     {
         entry.SetAbsoluteExpiration(TimeSpan.FromSeconds(_settings.Value.CACHE_EXPIRATION));
 
         var plutoSupply = await GetPlutoSupply();
         var treasuryValue = await GetTreasuryValue();
-        return treasuryValue / plutoSupply;
+        return Asset.FromUsdn(treasuryValue.Quantity / plutoSupply.Quantity);
     });
 
-    public Task<decimal> GetMarketPrice() => _cache.GetOrCreateAsync($"{nameof(TreasuryService)}_{nameof(GetMarketPrice)}", async entry =>
+    public Task<Asset> GetMarketPrice() => _cache.GetOrCreateAsync($"{nameof(TreasuryService)}_{nameof(GetMarketPrice)}", async entry =>
     {
         entry.SetAbsoluteExpiration(TimeSpan.FromSeconds(_settings.Value.CACHE_EXPIRATION));
 
         var evaluation = await _nodeApi.GetEvaluation(PlutoContracts.Parameters, "getMarketPrice(false)");
         var marketPrice = evaluation.Result.Value.GetProperty("_2").GetProperty("value").GetInt64();
-        return marketPrice / Assets.UsdnScale;
+        return Asset.FromRawUsdn(marketPrice);
     });
 
-    public Task<decimal> GetMaxPrice() => _cache.GetOrCreateAsync($"{nameof(TreasuryService)}_{nameof(GetMaxPrice)}", async entry =>
+    public Task<Asset> GetMaxPrice() => _cache.GetOrCreateAsync($"{nameof(TreasuryService)}_{nameof(GetMaxPrice)}", async entry =>
     {
         entry.SetAbsoluteExpiration(TimeSpan.FromSeconds(_settings.Value.CACHE_EXPIRATION));
 
         var backedPrice = await GetBackedPrice();
-        return backedPrice * 3;
+        return Asset.FromUsdn(backedPrice.Quantity * 3);
     });
 
     public Task<decimal> GetGrowthFactor() => _cache.GetOrCreateAsync($"{nameof(TreasuryService)}_{nameof(GetGrowthFactor)}", async entry =>
@@ -67,6 +67,6 @@ public class TreasuryService : ITreasuryService
         var marketPrice = await GetMarketPrice();
         var backedPrice = await GetBackedPrice();
 
-        return marketPrice / backedPrice * 100;
+        return marketPrice.Quantity / backedPrice.Quantity * 100;
     });
 }
