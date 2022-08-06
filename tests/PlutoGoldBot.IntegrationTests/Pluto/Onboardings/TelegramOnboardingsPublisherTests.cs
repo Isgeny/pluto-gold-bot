@@ -1,4 +1,5 @@
-﻿using PlutoGoldBot.Host.Blockchain;
+﻿using Microsoft.Extensions.Logging;
+using PlutoGoldBot.Host.Blockchain;
 using PlutoGoldBot.Host.NodeApi;
 using PlutoGoldBot.Host.Pluto.Onboardings;
 using PlutoGoldBot.Host.Pluto.Treasury;
@@ -23,7 +24,8 @@ public class TelegramOnboardingsPublisherTests
         };
         var settings = new OptionsWrapper<AppSettings>(appSettings);
         var treasuryService = new TreasuryService(nodeApi, memoryCache, settings);
-        var telegramOnboardingsPublisher = new TelegramOnboardingsPublisher(treasuryService, new TelegramBotClient(telegramToken), settings);
+        var logger = new Logger<TelegramOnboardingsPublisher>(new LoggerFactory());
+        var telegramOnboardingsPublisher = new TelegramOnboardingsPublisher(treasuryService, new TelegramBotClient(telegramToken), settings, logger);
 
         var onboarding = new Onboarding
         {

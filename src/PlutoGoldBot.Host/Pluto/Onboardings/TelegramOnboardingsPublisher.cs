@@ -11,12 +11,14 @@ public class TelegramOnboardingsPublisher : IOnboardingsPublisher
     private readonly ITreasuryService _treasuryService;
     private readonly ITelegramBotClient _telegramBotClient;
     private readonly IOptions<AppSettings> _settings;
+    private readonly ILogger<TelegramOnboardingsPublisher> _logger;
 
-    public TelegramOnboardingsPublisher(ITreasuryService treasuryService, ITelegramBotClient telegramBotClient, IOptions<AppSettings> settings)
+    public TelegramOnboardingsPublisher(ITreasuryService treasuryService, ITelegramBotClient telegramBotClient, IOptions<AppSettings> settings, ILogger<TelegramOnboardingsPublisher> logger)
     {
         _treasuryService = treasuryService;
         _telegramBotClient = telegramBotClient;
         _settings = settings;
+        _logger = logger;
     }
 
     public async Task PublishOnboardings(ICollection<Onboarding> onboardings)
@@ -25,6 +27,7 @@ public class TelegramOnboardingsPublisher : IOnboardingsPublisher
         {
             var messageText = await GetMessageText(onboarding);
             await _telegramBotClient.SendTextMessageAsync(_settings.Value.TELEGRAM_GROUP_ID, messageText, ParseMode.MarkdownV2, disableNotification: true, disableWebPagePreview: true);
+            _logger.LogInformation("Onboarding sent {Id}", onboarding.TransactionId);
         }
     }
 
