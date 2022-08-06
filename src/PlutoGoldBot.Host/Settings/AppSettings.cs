@@ -12,6 +12,16 @@ public class AppSettings
     public int CACHE_EXPIRATION { get; set; }
 
     /// <summary>
+    /// Used for determining amount of pluto emoji
+    /// </summary>
+    public int EMOJI_COST { get; set; }
+
+    /// <summary>
+    /// Minimum amount of issued pluto to scan
+    /// </summary>
+    public int MIN_ISSUED_SCAN { get; set; }
+
+    /// <summary>
     /// Waves node api url
     /// </summary>
     public string NODE_REST_URL { get; set; } = string.Empty;
