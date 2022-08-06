@@ -1,0 +1,12 @@
+.git
+.idea
+.vs
+**/bin/
+**/obj/
+.dockerignore
+.gitignore
+Dockerfile*
+*.yml
+*.sh
+*.md
+*.user
