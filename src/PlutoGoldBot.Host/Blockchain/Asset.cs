@@ -39,6 +39,10 @@ public readonly struct Asset
 
     public static Asset FromUsdn(decimal quantity) => new(quantity, 6, "USD-N", UsdnId);
 
+    public static Asset FromRawWaves(long quantity) => new(quantity, 8, "WAVES", "WAVES");
+
+    public static Asset FromWaves(decimal quantity) => new(quantity, 8, "WAVES", "WAVES");
+
     public string ToEscapedQuantityString(int decimals = 0)
     {
         return Quantity.ToString("N" + decimals, CultureInfo.InvariantCulture).Replace(".", "\\.").Replace("-", "\\-");
