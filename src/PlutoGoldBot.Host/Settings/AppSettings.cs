@@ -37,9 +37,9 @@ public class AppSettings
     public int SCAN_PERIOD { get; set; }
 
     /// <summary>
-    /// Telegram group id where notification will be sent
+    /// Telegram group ids where notification will be sent, separated by ;
     /// </summary>
-    public long TELEGRAM_GROUP_ID { get; set; }
+    public string TELEGRAM_GROUP_IDS { get; set; } = string.Empty;
 
     /// <summary>
     /// Telegram bot token

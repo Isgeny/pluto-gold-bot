@@ -11,15 +11,15 @@ namespace PlutoGoldBot.IntegrationTests.Pluto.Onboardings;
 public class TelegramOnboardingsPublisherTests
 {
     [Theory(Skip = "PASTE YOUR CREDENTIALS")]
-    [InlineData("", 0)]
-    public async Task PublishOnboardings(string telegramToken, long telegramGroupId)
+    [InlineData("", "")]
+    public async Task PublishOnboardings(string telegramToken, string telegramGroupIds)
     {
         var nodeApi = RestService.For<INodeApi>(PublicNodes.WavesNodes);
         var memoryCache = new MemoryCache(new MemoryCacheOptions());
         var appSettings = new AppSettings
         {
             CACHE_EXPIRATION = 1,
-            TELEGRAM_GROUP_ID = telegramGroupId,
+            TELEGRAM_GROUP_IDS = telegramGroupIds,
             EMOJI_COST = 100,
         };
         var settings = new OptionsWrapper<AppSettings>(appSettings);

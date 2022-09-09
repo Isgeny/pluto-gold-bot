@@ -23,10 +23,17 @@ public class TelegramOnboardingsPublisher : IOnboardingsPublisher
 
     public async Task PublishOnboardings(ICollection<Onboarding> onboardings)
     {
+        var telegramGroupIds = _settings.Value.TELEGRAM_GROUP_IDS.Split(";").Select(long.Parse).ToHashSet();
+
         foreach (var onboarding in onboardings)
         {
             var messageText = await GetMessageText(onboarding);
-            await _telegramBotClient.SendTextMessageAsync(_settings.Value.TELEGRAM_GROUP_ID, messageText, ParseMode.MarkdownV2, disableNotification: true, disableWebPagePreview: true);
+
+            foreach (var telegramGroupId in telegramGroupIds)
+            {
+                await _telegramBotClient.SendTextMessageAsync(telegramGroupId, messageText, ParseMode.MarkdownV2, disableNotification: true, disableWebPagePreview: true);
+            }
+
             _logger.LogInformation("Onboarding sent {Id}", onboarding.TransactionId);
         }
     }
